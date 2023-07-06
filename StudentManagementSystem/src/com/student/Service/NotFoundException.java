@@ -9,6 +9,5 @@ public NotFoundException(String msg)
 {
 super(msg);	
 }
-
 }
 

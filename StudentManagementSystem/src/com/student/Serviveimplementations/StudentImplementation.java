@@ -58,6 +58,7 @@ public class StudentImplementation implements StudentManagement {
 			{
 				 isPresent=true;
 				 
+				 
 			}
 			 
 		if(isPresent==true)
@@ -87,17 +88,30 @@ public class StudentImplementation implements StudentManagement {
 		name = sc.next();
 		if (CommStudents.isEmpty()) {
 			throw new NotFoundException();
-		} else {
+		}
+		boolean isPresent=false;
+		
 			for (Student Student : CommStudents) {
 				if (Student.getName().equalsIgnoreCase(name)) {
-					System.out.println(Student);
-				} else {
-					throw new NotFoundException();
-				}
+					isPresent=true;
+					break;
+				} 
 			}
+			if(isPresent==true)
+			{
+				for (Student Student1 : CommStudents) {
+					if (Student1.getName().equalsIgnoreCase(name)) {
+						System.out.println(Student1);
+					}  
+			}
+			}
+			else {
+			throw new NotFoundException();
+			}
+			
 			return name;
 		}
-	}
+	
 
 	@Override
 	public void displayStudent() {
@@ -123,16 +137,33 @@ public class StudentImplementation implements StudentManagement {
 		course = sc.next();
 		if (CommStudents.isEmpty()) {
 			throw new NotFoundException();
-		} else {
+		 
+		} 
+		boolean isPresent=false;
+		
 			for (Student Student1 : CommStudents) {
 				if (Student1.getCourse().getCourse_name().equalsIgnoreCase(course)) {
-					System.out.println(Student1.getId() + " " + Student1.getName() + " " + Student1.getCourse() + " "
-							+ Student1.getGrade());
-				} else {
-					throw new NotFoundException();
-				}
+					isPresent=true;
+				    break;   
+				}  
+				
 			}
+			if(isPresent==true)
+			{
+				for (Student Student1 : CommStudents) {
+					if (Student1.getCourse().getCourse_name().equalsIgnoreCase(course))
+				System.out.println(Student1.getId() + " " + Student1.getName() + " " + Student1.getCourse() + " "
+						+ Student1.getGrade());
+			}
+			}
+	
+			else
+			{
+				throw new NotFoundException();
+			}
+	 
 			return course;
 		}
-	}
+
+
 }
